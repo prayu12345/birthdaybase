@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cola.css">
+</head>
+<body>
+    
+    <header>
+        <div class="left">
+            <h2>Happy</h2>
+            <h2>Birthday</h2>
+            <h1 style="font-size: 50px;">Priya</h1>
+            <img src="images/2.png" alt="">
+        </div>
+        <div class="author">
+            <h3>Prayu</h3>
+            <div >
+                <p>Design By</p>
+                <p>Ayush</p>
+            </div>
+            <div>
+                <p>Code By</p>
+                <p>Ayush</p>
+            </div>
+            <img src="images/code.png" alt="">
+            
+        </div>
+        
+    </header>
+    <div class="banner">
+        <div class="product">
+            
+            
+
+            <div class="soda" style="--url: url(images/3.jpg)">
+            </div>
+        </div>
+
+        
+        <div class="rock">
+            <img src="images/rock1.png" alt="">
+            
+    <!-- Button added on top of rock1 -->
+    
+    
+    <img src="images/rock2.png" alt="">
+    <img src="images/rock3.png" alt="">
+
+    <p class="birthday-message">Cheers To You 🥂</p>
+        </div>
+        <p style="color: aliceblue;">touch the bootle then rock .</p>
+        <a href="paper.html" class="rock-btn">
+            <button>Next</button>
+        </a>
+    </div>
+    <audio id="bg-music" autoplay loop>
+        <source src="/images/audio6.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      
+      <script>
+        const music = document.getElementById("bg-music");
+      
+        // Try playing on page load (muted)
+        music.muted = true;
+        music.play().then(() => {
+          console.log("Music autoplay started (muted)");
+        }).catch((err) => {
+          console.log("Autoplay failed:", err);
+        });
+      
+        // Unmute and resume on first interaction
+        window.addEventListener('click', () => {
+          music.muted = false;
+          music.play();
+        }, { once: true }); // only trigger once
+      </script>
+      
+      
+</body>
+</html>
