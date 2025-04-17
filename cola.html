@@ -56,35 +56,37 @@
             <button>Next</button>
         </a>
     </div>
-   <audio id="bg-music" autoplay loop muted>
-  <source src="/images/audio6.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+    <!-- Audio element: autoplay muted initially -->
+  <audio id="bg-music" autoplay loop muted>
+    <source src="/images/audio6.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
-<script>
-  const music = document.getElementById("bg-music");
+  <script>
+    const music = document.getElementById("bg-music");
 
-  // Attempt to autoplay muted audio
-  music.play().then(() => {
-    console.log("Music autoplay started (muted)");
-  }).catch((err) => {
-    console.log("Autoplay failed:", err);
-  });
+    // Try to autoplay music (muted)
+    music.play().then(() => {
+      console.log("Music autoplay started (muted)");
+    }).catch((err) => {
+      console.log("Autoplay failed:", err);
+    });
 
-  // Unmute and play on first interaction (click/touch)
-  const resumeAudio = () => {
-    music.muted = false;
-    music.play();
-    console.log("Audio unmuted and resumed");
-    window.removeEventListener('click', resumeAudio);
-    window.removeEventListener('touchstart', resumeAudio);
-  };
+    // Function to unmute and play music on first user interaction
+    const resumeAudio = () => {
+      music.muted = false;
+      music.play().then(() => {
+        console.log("Audio unmuted and resumed");
+      }).catch((err) => {
+        console.log("Play after unmuting failed:", err);
+      });
+    };
 
-  window.addEventListener('click', resumeAudio);
-  window.addEventListener('touchstart', resumeAudio);
-</script>
-
-      
+    // Listen for first interaction from user (click, touch, pointer)
+    ['click', 'touchstart', 'pointerdown'].forEach(event => {
+      window.addEventListener(event, resumeAudio, { once: true });
+    });
+       </script>
       
 </body>
 </html>
